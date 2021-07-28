@@ -1,0 +1,61 @@
+{%extends "base.html"%} {%block title %} Messages {%endblock%} {%block content%}
+<br />
+
+{%if add != 1%}
+<div align="center">
+  <img
+    class="avatar-img rounded-circle"
+    style="
+      width: 7%;
+      height: 7%;
+      -o-object-fit: cover;
+      object-fit: cover;
+      border-radius: 50% !important;
+    "
+    src="https://mohamed99mamdouh.sarahah.com/img/avatar.png"
+  />
+  <h5 class="panel-title" style="margin-bottom: 20px">
+    <br />
+    <span class="text-inherit"> {{first_name}} </span>
+  </h5>
+  <span class="text-gray-500" style="color: #abbcd5 !important">{{link}}</span>
+</div>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#received" data-toggle="tab">Received</a>
+  </li>
+</ul>
+<br />
+{%endif%} {%if no_comments == true%}
+<span>No messages yet :(</span>
+{%else%}
+<ul class="list-group list-group-flush" id="notes">
+  {%for note in notes%}
+  <li class="list-group-item">
+    {{note['data']}}
+    <button type="button" class="close" onClick="deleteNote({{note['id']}})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {%endfor%}
+</ul>
+{%endif%}
+<br />
+{%if add == 1%}
+
+<form method="post">
+  <textarea
+    name="note"
+    class="form-control"
+    id="note"
+    placeholder="Leave a comment here"
+    cols="30"
+    rows="10"
+    style="resize: none"
+  ></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Send</button>
+  </div>
+</form>
+{%endif%} {%endblock%}
