@@ -31,7 +31,7 @@ def home():
             except:
                 password = False
 
-            if password == True:
+            if password:
                 flash("logged in successfuly", category="success")
                 session["loggedin"] = True
                 session["id"] = result["id"]
