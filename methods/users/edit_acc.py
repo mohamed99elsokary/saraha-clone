@@ -38,16 +38,9 @@ def home():
                 except:
                     password = False
 
-                if password == True:
-                    if new_password1 != None:
-                        password = ph.hash(new_password1)
-                    else:
-                        password = old_password
-                    if new_name != None:
-                        name = new_name
-                    else:
-                        name = first_name
-
+                if password:
+                    password = ph.hash(new_password1) if new_password1 != None else old_password
+                    name = new_name if new_name != None else first_name
                     cur.execute(
                         "UPDATE users SET password =%s ,first_name =%s WHERE id = %s",
                         (password, name, id),

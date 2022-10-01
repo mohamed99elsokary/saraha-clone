@@ -27,7 +27,7 @@ def home():
     results = cur.fetchall()
     for row in results:
         reset_password = row["reset_password"]
-    if code == None:
+    if code is None:
         random_code = "".join(
             random.choice(string.ascii_uppercase + string.digits) for _ in range(6)
         )
